@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import contextlib
 import time
+import json
 
 _timing_db = []
 
@@ -16,6 +17,9 @@ def record(timing_information):
         "time_end": unix epoch timestamp}
     """
     _timing_db.append(timing_information)
+
+    with open("timing_data.json", "w") as fp:
+        json.dump(_timing_db, fp, indent=4)
 
 
 @contextlib.contextmanager
