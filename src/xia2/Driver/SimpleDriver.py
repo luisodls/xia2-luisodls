@@ -48,7 +48,7 @@ class SimpleDriver(DefaultDriver):
                 environment[name] = added
 
 
-        print("\n command_line =", command_line, "\n")
+        #print("\n command_line =", command_line, "\n")
 
         self._runtime_log["process start"] = time.time()
         self._popen = subprocess.Popen(
