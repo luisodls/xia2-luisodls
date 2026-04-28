@@ -86,6 +86,7 @@ class DefaultDriver:
 
     def set_xpid(self, xpid):
         self._xpid = xpid
+        print("xpid(set_xpid) = ", self._xpid)
 
     def get_xpid(self):
         return self._xpid
