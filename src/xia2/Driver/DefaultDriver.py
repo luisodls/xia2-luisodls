@@ -56,6 +56,11 @@ class DefaultDriver:
 
         self._scratch_directories = []
 
+        # these variables to be declared here
+        # if we want to know if it has some value later
+        self._experiments_filename = None
+        self._reflections_filename = None
+
         self._log_file = None
         self._log_file_name = None
 
@@ -426,6 +431,7 @@ class DefaultDriver:
                     )
             else:
                 command_line = "(unknown)"
+
         if self._runtime_log:
             xia2.Driver.timing.record(
                 {
