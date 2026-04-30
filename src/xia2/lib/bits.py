@@ -97,8 +97,6 @@ def auto_logfiler(DriverInstance, extra=None):
         logfile = os.path.join(working_directory, "%d_%s.log" % (number, executable))
 
 
-    print("\n================================================================ auto_logfiler(number) =", number)
-    #print(dir(DriverInstance))
 
     DriverInstance.set_xpid(number)
 
@@ -107,6 +105,23 @@ def auto_logfiler(DriverInstance, extra=None):
     DriverInstance.write_log_file(logfile)
 
     return logfile
+
+
+def track_connections(DriverInstance, full_commamd_line):
+    print(
+        "\n", "=" * 70, "Connecting (number) =",
+        DriverInstance.get_xpid(), " = ", DriverInstance._xpid
+    )
+    print("Running:", full_commamd_line)
+    print("DriverInstance(executable) =", DriverInstance._executable)
+    if DriverInstance._experiments_filename is not None:
+        print("_experiments_filename =", DriverInstance._experiments_filename, "\n")
+
+    elif DriverInstance._reflections_filename is not None:
+        print("_reflections_filename =", DriverInstance._reflections_filename, "\n")
+
+    else:
+        print("need to deduce input _xpid from:", DriverInstance._command_line[0], "\n")
 
 
 def transpose_loggraph(loggraph_dict):

@@ -8,6 +8,7 @@ import time
 from xia2.Driver.DefaultDriver import DefaultDriver
 from xia2.Driver.DriverHelper import kill_process
 
+from xia2.lib.bits import track_connections
 
 class SimpleDriver(DefaultDriver):
     def __init__(self):
@@ -47,19 +48,7 @@ class SimpleDriver(DefaultDriver):
             else:
                 environment[name] = added
 
-
-        print("Running:", command_line)
-        if self._experiments_filename is not None:
-            print("\n _experiments_filename =", self._experiments_filename, "\n")
-
-        elif self._reflections_filename is not None:
-            print("\n _reflections_filename =", self._reflections_filename, "\n")
-
-        else:
-            print("\n need to deduce input _xpid from:", self._command_line[0], "\n")
-
-        #print(dir(self), "\n")
-
+        track_connections(self, command_line)
 
         self._runtime_log["process start"] = time.time()
         self._popen = subprocess.Popen(
